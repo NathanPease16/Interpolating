@@ -53,8 +53,12 @@ public static int InterpolateFloat<T>(T target, string property, float start, fl
 
 
 ## InterpolateVector2
-`public static int InterpolateVector2<T>(T target, string property, Vector2 goal, float rate, AnimationCurve curve=null, RateMode mode=RateMode.time) where T : class`
-` public static int InterpolateVector2<T>(T target, string property, Vector2 start, Vector2 goal, float rate, AnimationCurve curve=null, RateMode mode=RateMode.time) where T : class`
+```cs
+public static int InterpolateVector2<T>(T target, string property, Vector2 goal, float rate, AnimationCurve curve=null, RateMode mode=RateMode.time) where T : class
+```
+```cs
+public static int InterpolateVector2<T>(T target, string property, Vector2 start, Vector2 goal, float rate, AnimationCurve curve=null, RateMode mode=RateMode.time) where T : class
+```
 
 | Parameter | Description |
 | - | - |
@@ -134,3 +138,58 @@ public static int InterpolateColor<T>(T target, string property, Color start, Co
 
 ### Returns
 **int** ID of the newly started interpolation
+
+
+## DoesInterpolationExist
+```cs
+public static bool DoesInterpolationExist(int id)
+```
+| Parameter | Description |
+| - | - |
+| id | ID of the interpolation to check |
+
+### Returns
+**bool** If the interpolation exists
+
+
+## IsInterpolationPaused
+```cs
+public static bool IsInterpolationPaused(int id)
+```
+
+| Parameter | Description |
+| - | - |
+| id | ID of the interpolation to check |
+
+### Returns
+**bool** If the interpolation is paused
+
+
+## PauseInterpolation
+```cs
+public static void PauseInterpolation(int id)
+```
+
+| Parameter | Description |
+| - | - |
+| id | ID of the interpolation to pause |
+
+
+## ResumeInterpolation
+```cs
+public static void ResumeInterpolation(int id)
+```
+
+| Parameter | Description |
+| - | - |
+| id | ID of the interpolation to resume |
+
+
+## CancelInterpolation
+```cs
+public static void CancelInterpolation(int id)
+```
+
+| Parameter | Description |
+| - | - |
+| id | ID of the interpolation to cancel |

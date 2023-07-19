@@ -31,5 +31,16 @@
 ```cs 
 public static int InterpolateFloat<T>(T target, string property, float goal, float rate, AnimationCurve curve=null, RateMode mode=RateMode.time) where T : class
 ```
+```cs 
+public static int InterpolateFloat<T>(T target, string property, float start, float goal, float rate, AnimationCurve curve=null, RateMode mode=RateMode.time) where T : class
+```
 
-| hi | wsg |
+| Parameter | Description |
+| - | - |
+| target | The target object to interpolate the property of |
+| property | Name of the property to interpolate |
+| start | Where the interpolation should start off |
+| goal | Desired end value |
+| rate | Rate of the interpolation |
+| curve | Curve the interpolation should follow |
+| mode | The interpolation mode rate should move in |

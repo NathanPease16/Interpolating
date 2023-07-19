@@ -44,3 +44,6 @@ public static int InterpolateFloat<T>(T target, string property, float start, fl
 | rate | Rate of the interpolation |
 | curve | Curve the interpolation should follow |
 | mode | The interpolation mode rate should move in |
+
+### Returns
+**int** ID of the newly started interpolation

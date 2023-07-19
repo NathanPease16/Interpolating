@@ -12,3 +12,8 @@
 | easeIn | Eases into a linear line towards 1 |
 | easeOut | Eases out of a linear line towards 1 |
 | easeInOut| Eases into and out of a linear line towards 1 |
+
+## Public Methods
+| Method | Description |
+| - | - |
+| waaa | wooo |

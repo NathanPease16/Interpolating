@@ -29,6 +29,7 @@
 | ResumeInterpolation | Unpauses an interpolation |
 | CancelInterpolation | Cancels an interpolation |
 
+-------------------------------------
 
 ## InterpolateFloat
 ```cs 
@@ -63,6 +64,7 @@ void Start()
 }
 ```
 
+-------------------------------------
 
 ## InterpolateVector2
 ```cs
@@ -99,6 +101,7 @@ void ShowUI()
 }
 ```
 
+-------------------------------------
 
 ## InterpolateVector3
 ```cs 
@@ -140,6 +143,7 @@ void Update()
 }
 ```
 
+-------------------------------------
 
 ## InterpolateQuaternion
 ```cs 
@@ -177,6 +181,7 @@ void Update()
 }
 ```
 
+-------------------------------------
 
 ## InterpolateColor
 ```cs 
@@ -199,18 +204,6 @@ public static int InterpolateColor<T>(T target, string property, Color start, Co
 ### Returns
 **int** ID of the newly started interpolation
 
-
-## DoesInterpolationExist
-```cs
-public static bool DoesInterpolationExist(int id)
-```
-| Parameter | Description |
-| - | - |
-| id | ID of the interpolation to check |
-
-### Returns
-**bool** If the interpolation exists
-
 ### Description
 Interpolate the value of a Color
 
@@ -225,6 +218,36 @@ void Update()
 }
 ```
 
+-------------------------------------
+
+## DoesInterpolationExist
+```cs
+public static bool DoesInterpolationExist(int id)
+```
+| Parameter | Description |
+| - | - |
+| id | ID of the interpolation to check |
+
+### Returns
+**bool** If the interpolation exists
+
+### Descriptions
+When an interpolation is started, it returns an ID associated with it. If that ID is canceled or the interpolation is finished, the interpolation associated with that ID no longer exists
+
+```cs
+public float time = 10f;
+public Vector3 start;
+public Vector3 goal;
+private int id = -1;
+
+void Update()
+{
+    if (!WiggleWarp.DoesInterpolationExist(id))
+        id = WiggleWarp.InterpolateVector3(transform, "position", start, goal, time, WiggleWarp.bouncing);
+}
+```
+
+-------------------------------------
 
 ## IsInterpolationPaused
 ```cs
@@ -238,6 +261,29 @@ public static bool IsInterpolationPaused(int id)
 ### Returns
 **bool** If the interpolation is paused
 
+### Description
+Determines if the interpolation associated with the given ID is paused or not
+
+```cs
+public float time = 2.5f;
+public Material material;
+public Color start;
+public Color goal;
+private int id = -1;
+
+void Start()
+{
+    id = WiggleWarp.InterpolateColor(material, "color", start, goal, time);
+}
+
+void Update()
+{
+    if (Input.GetKeyDown(KeyCode.P) && !WiggleWarp.IsInterpolationPaused(id))
+         WiggleWarp.PauseInterpolation(id);
+}
+```
+
+-------------------------------------
 
 ## PauseInterpolation
 ```cs
@@ -248,6 +294,31 @@ public static void PauseInterpolation(int id)
 | - | - |
 | id | ID of the interpolation to pause |
 
+### Description
+Pauses the interpolation associated with the given ID
+
+```cs
+public float time = .1f;
+public Vector3 start;
+public Vector3 goal;
+public bool paused;
+private int id = -1;
+
+void Start()
+{
+    id = WiggleWarp.InterpolateVector3(transform, "scale", start, goal, time, WiggleWarp.bouncing);
+}
+
+void Update()
+{
+    if (paused)
+        WiggleWarp.PauseInterpolation(id);
+    else
+        WiggleWarp.ResumeInterpolation(id);
+}
+```
+
+-------------------------------------
 
 ## ResumeInterpolation
 ```cs
@@ -258,6 +329,33 @@ public static void ResumeInterpolation(int id)
 | - | - |
 | id | ID of the interpolation to resume |
 
+### Description
+Resumes the interpolation associated with the given ID
+
+```cs
+public float time = 5f;
+public Quaternion start;
+public Quaternion goal;
+private int id = -1;
+
+void Start()
+{
+    id = WiggleWarp.InterpolateQuaternion(transform, "rotation", start, goal, time);
+}
+
+void Update()
+{
+    if (Input.GetKeyDown(KeyCode.P))
+    {
+        if (WiggleWarp.IsInterpolationPaused(id))
+            WiggleWarp.ResumeInterpolation(id);
+        else
+            WiggleWarp.PauseInterpolation(id);
+    }
+}
+```
+
+-------------------------------------
 
 ## CancelInterpolation
 ```cs
@@ -267,3 +365,25 @@ public static void CancelInterpolation(int id)
 | Parameter | Description |
 | - | - |
 | id | ID of the interpolation to cancel |
+
+### Description
+Cancels the interpolation associated with the given ID
+
+```cs
+public float time = 1.2f;
+public Vector2 start;
+public Vector2 goal;
+public bool paused;
+private int id = -1;
+
+void Start()
+{
+    id = WiggleWarp.InterpolateVector3(transform, "position", start, goal, time, WiggleWarp.recovery);
+}
+
+void Update()
+{
+    if (Input.GetKeyDown(KeyCode.Escape))
+        WiggleWarp.CancelInterpolation(id);
+}
+```

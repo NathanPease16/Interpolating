@@ -28,6 +28,6 @@
 | CancelInterpolation | Cancels an interpolation |
 
 ## InterpolateFloat
-```cs
-var yeah = new FloatObj();
+```cs 
+public static int InterpolateFloat<T>(T target, string property, float goal, float rate, AnimationCurve curve=null, RateMode mode=RateMode.time) where T : class
 ```

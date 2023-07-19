@@ -16,4 +16,13 @@
 ## Public Methods
 | Method | Description |
 | - | - |
-| waaa | wooo |
+| InterpolateFloat | Interpolates a float from start to goal |
+| InterpolateVector2 | Interpolates a Vector2 from start to goal |
+| InterpolateVector3 | Interpolates a Vector3 from start to goal |
+| InterpolateQuaternion | Interpolates a Quaternion from start to goal |
+| InterpolateColor | Interpolates a Color from start to goal |
+| DoesInterpolationExist | Does the interpolation exist? |
+| IsInterpolationPaused | Is the interpolation currently paused? |
+| PauseInterpolation | Pauses an interpolation |
+| ResumeInterpolation | Unpauses an interpolation |
+| CancelInterpolation | Cancels an interpolation |

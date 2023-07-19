@@ -26,3 +26,8 @@
 | PauseInterpolation | Pauses an interpolation |
 | ResumeInterpolation | Unpauses an interpolation |
 | CancelInterpolation | Cancels an interpolation |
+
+## InterpolateFloat
+```cs
+var yeah = new FloatObj();
+```

@@ -51,6 +51,18 @@ public static int InterpolateFloat<T>(T target, string property, float start, fl
 ### Returns
 **int** ID of the newly started interpolation
 
+### Description
+Interpolate the value of a float
+
+```cs
+public AudioSource audioSource;
+
+void Start()
+{
+    WiggleWarp.InterpolateFloat(audioSource, "volume", 0f, 1f, 5f);
+}
+```
+
 
 ## InterpolateVector2
 ```cs
@@ -72,6 +84,20 @@ public static int InterpolateVector2<T>(T target, string property, Vector2 start
 
 ### Returns
 **int** ID of the newly started interpolation
+
+### Description
+Interpolate the value of a Vector2
+
+```cs
+public float speed = 100f;
+public Vector2 goal;
+public RectTransform rectTransform;
+
+void ShowUI()
+{
+    WiggleWarp.InterpolateVector2(rectTransform, "sizeDelta", goal, speed, WiggleWarp.linear, RateMode.speed);
+}
+```
 
 
 ## InterpolateVector3
@@ -95,6 +121,25 @@ public static int InterpolateVector3<T>(T target, string property, Vector3 start
 ### Returns
 **int** ID of the newly started interpolation
 
+### Description
+Interpolate the value of a Vector3
+
+```cs
+public float time = 3f;
+public Vector3 start;
+public Vector3 goal;
+private bool started;
+
+void Update()
+{
+    if (Input.GetKeyDown(KeyCode.Alpha1) && !started)
+    {
+        WiggleWarp.InterpolateVector3(transform, "position", start, goal, time, WiggleWarp.bouncing);
+        started = true;
+    }
+}
+```
+
 
 ## InterpolateQuaternion
 ```cs 
@@ -116,6 +161,21 @@ public static int InterpolateQuaternion<T>(T target, string property, Quaternion
 
 ### Returns
 **int** ID of the newly started interpolation
+
+### Description
+Interpolate the value of a Quaternion
+
+```cs
+public float speed = 10f;
+public Quaternion upright;
+private int id = -1;
+
+void Update()
+{
+    if (transform.rotation != upright && !WiggleWarp.DoesInterpolationExist(id))
+        id = WiggleWarp.InterpolateQuaternion(transform, "rotation", upright, speed, WiggleWarp.linear, RateMode.speed);
+}
+```
 
 
 ## InterpolateColor
@@ -150,6 +210,20 @@ public static bool DoesInterpolationExist(int id)
 
 ### Returns
 **bool** If the interpolation exists
+
+### Description
+Interpolate the value of a Color
+
+```cs
+public float time = 2f;
+public Material material;
+
+void Update()
+{
+    if (Input.GetKeyDown(KeyCode.Alpha1))
+        WiggleWarp.InterpolateColor(material, "color", Color.white, Color.black, time, WiggleWarp.easeInOut);
+}
+```
 
 
 ## IsInterpolationPaused

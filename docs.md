@@ -53,12 +53,8 @@ public static int InterpolateFloat<T>(T target, string property, float start, fl
 
 
 ## InterpolateVector2
-```cs 
-public static int InterpolateVector2<T>(T target, string property, Vector2 goal, float rate, AnimationCurve curve=null, RateMode mode=RateMode.time) where T : class
-```
-```cs 
-public static int InterpolateVector2<T>(T target, string property, Vector2 start, Vector2 goal, float rate, AnimationCurve curve=null, RateMode mode=RateMode.time) where T : class
-```
+`public static int InterpolateVector2<T>(T target, string property, Vector2 goal, float rate, AnimationCurve curve=null, RateMode mode=RateMode.time) where T : class`
+` public static int InterpolateVector2<T>(T target, string property, Vector2 start, Vector2 goal, float rate, AnimationCurve curve=null, RateMode mode=RateMode.time) where T : class`
 
 | Parameter | Description |
 | - | - |
